@@ -40,10 +40,8 @@ public interface OrderService {
 
 	/**
 	 * 历史订单分页查询
-	 * @param page
-	 * @param pageSize
-	 * @param status
+	 * @param ordersPageQueryDTO
 	 * @return
 	 */
-	PageResult pageQuery4User(int page, int pageSize, Integer status);
+	PageResult pageQuery4User(OrdersPageQueryDTO ordersPageQueryDTO);
 }

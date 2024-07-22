@@ -163,18 +163,13 @@ public class OrderServiceImpl implements OrderService {
 
 	/**
 	 * 历史订单分页查询
-	 * @param pageNum
-	 * @param pageSize
-	 * @param status
+	 * @param ordersPageQueryDTO
 	 * @return
 	 */
 	@Override
-	public PageResult pageQuery4User(int pageNum, int pageSize, Integer status) {
-		PageHelper.startPage(pageNum, pageSize);
-		OrdersPageQueryDTO ordersPageQueryDTO = new OrdersPageQueryDTO();
-
+	public PageResult pageQuery4User(OrdersPageQueryDTO ordersPageQueryDTO) {
+		PageHelper.startPage(ordersPageQueryDTO.getPage(), ordersPageQueryDTO.getPageSize());
 		ordersPageQueryDTO.setUserId(BaseContext.getCurrentId());
-		ordersPageQueryDTO.setStatus(status);
 
 		Page<Orders> page = orderMapper.pageQuery(ordersPageQueryDTO);
 		ArrayList<OrderVO> orderVOList = new ArrayList<>();
